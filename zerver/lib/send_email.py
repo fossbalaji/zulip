@@ -33,6 +33,7 @@ def build_email(template_prefix, to_user_id=None, to_email=None, from_name=None,
         to_user = get_user_profile_by_id(to_user_id)
         # Change to formataddr((to_user.full_name, to_user.email)) once
         # https://github.com/zulip/zulip/issues/4676 is resolved
+        # Use Header to formataddr to email address
         to_email = formataddr((str(Header(to_user.full_name, 'utf-8')), to_user.email))
 
     if context is None:
